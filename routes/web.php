@@ -26,5 +26,7 @@ Route::put('/groceries/{grocery}', [GroceriesController::class, 'update'])->name
 
 Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy'])->name('groceries.destroy');
 
+Route::redirect('/', '/groceries');
+
 
 //https://laravel.com/docs/9.x/controllers
