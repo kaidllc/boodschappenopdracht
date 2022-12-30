@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Http\Controllers\GroceryController;
+use App\Http\Controllers\GroceriesController;
 
 Route::get('/groceries', [GroceriesController::class, 'index'])->name('groceries.index');
 
@@ -29,4 +29,4 @@ Route::delete('/groceries/{grocery}', [GroceriesController::class, 'destroy'])->
 Route::redirect('/', '/groceries');
 
 
-//https://laravel.com/docs/9.x/controllers
+
