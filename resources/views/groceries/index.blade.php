@@ -8,6 +8,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Amount</th>
+        </tr>
+
+        @forelse($grocery as $grocery)
+            <tr>
+                <td>{{$grocery->name}}</td>
+                <td>{{$grocery->price}}</td>
+                <td>{{$grocery->amount}}</td>
+            </tr>
+        @empty
+            <tr>
+                <td colspan="3">No record found</td>
+            </tr>
+        @endforelse
+        
+    </table>
 </body>
 </html>
