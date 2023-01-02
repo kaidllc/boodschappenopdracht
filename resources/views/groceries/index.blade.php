@@ -15,7 +15,7 @@
             <th>Amount</th>
         </tr>
 
-        @forelse($grocery as $grocery)
+        @forelse($groceries as $grocery)
             <tr>
                 <td>{{$grocery->name}}</td>
                 <td>{{$grocery->price}}</td>
@@ -26,7 +26,7 @@
                 <td colspan="3">No record found</td>
             </tr>
         @endforelse
-        
+
     </table>
 </body>
 </html>

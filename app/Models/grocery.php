@@ -9,10 +9,4 @@ use App\Models\grocery;
 class grocery extends Model
 {
     use HasFactory;
-
-    public function printGroceries(){
-        foreach (grocery::all() as $grocery) {
-            echo $grocery->name;
-        };
-    }
 }
