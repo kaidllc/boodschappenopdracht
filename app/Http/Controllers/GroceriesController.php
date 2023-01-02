@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\grocery;
 
 
 class GroceriesController extends Controller {
     public function index() {
-        return "index page";
+        return view("groceries/index");
     }
 
     public function create() {
