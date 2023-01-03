@@ -5,8 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/app.css">
 </head>
+
 <body>
-    
+
+    <nav>
+        <a href="{{ route('index') }}">Home</a>
+        <a href="{{ route('create') }}">Add Grocery</a>
+    </nav>
+
+    @yield('content')
+
 </body>
 </html>
