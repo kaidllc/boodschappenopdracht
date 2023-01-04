@@ -1,6 +1,8 @@
 @extends('/layouts/app')
 
 @section('content')
+    <h1>Grocery List</h1>
+
     <?php $total = 0; ?>
 
     <table>
@@ -9,6 +11,8 @@
             <th>Price</th>
             <th>Amount</th>
             <th>Subtotal</th>
+            <th>Edit Product</th>
+            <th>Delete Product</th>
         </tr>
         
         @forelse($groceries as $grocery)
@@ -18,6 +22,8 @@
                 <td>{{$grocery->price}}</td>
                 <td>{{$grocery->amount}}</td>
                 <td>{{$grocery->sum('price')}}</td>
+                <td><a href="{{ route('groceries.edit', $grocery->id) }}">Edit</a></td>
+                <td><a href="{{ route('groceries.destroy', $grocery->id) }}">Delete</a></td>
             </tr>
         @empty
             <tr>
@@ -31,7 +37,7 @@
         </tr>
 
     </table>
-    
+
 @endsection
 
 

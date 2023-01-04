@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\grocery;
 
-class grocery extends Model
+class Grocery extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }
