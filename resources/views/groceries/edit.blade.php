@@ -14,7 +14,7 @@
         @enderror
 
         <label for="category">Product Category</label>
-        <select id="category_id" name="category_id" value="{{old('category_id', $grocery->category_id)}}" required>
+        <select id="category_id" name="category_id" selected="{{old('category_id', $grocery->category_id)}}" required>
             <option value="1">Beverages</option>
             <option value="2">Bread/Bakery</option>
             <option value="3">Canned/Jarred Goods</option>
