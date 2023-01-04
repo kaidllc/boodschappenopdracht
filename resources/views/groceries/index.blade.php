@@ -8,20 +8,22 @@
     <table>
         <tr>
             <th>Name</th>
+            <th>Category</th>
             <th>Price</th>
             <th>Amount</th>
             <th>Subtotal</th>
-            <th>Edit Product</th>
-            <th>Delete Product</th>
+            <th>Edit</th>
+            <th>Delete</th>
         </tr>
         
         @forelse($groceries as $grocery)
-            <?php $total += $items->product_price; ?>
+            <?php $total += $grocery->price * $grocery->amount; ?>
             <tr>
                 <td>{{$grocery->name}}</td>
+                <td>{{$grocery->category->name}}</td>
                 <td>{{$grocery->price}}</td>
                 <td>{{$grocery->amount}}</td>
-                <td>{{$grocery->sum('price')}}</td>
+                <td>{{$grocery->price * $grocery->amount}}</td>
                 <td><a href="{{ route('groceries.edit', $grocery->id) }}">Edit</a></td>
                 <td><a href="{{ route('groceries.destroy', $grocery->id) }}">Delete</a></td>
             </tr>
@@ -40,5 +42,3 @@
 
 @endsection
 
-
-<!-- check if table loop works -->

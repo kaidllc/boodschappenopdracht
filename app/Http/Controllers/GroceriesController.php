@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 use App\Models\Grocery;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 
 class GroceriesController extends Controller {
     public function index() {
-        $groceries = Device::all();
-        return view("groceries/index");
+        $groceries = Grocery::all();
+
+        return view("groceries.index", compact("groceries"));
     }
 
     public function create() {
-        return view("groceries/create");
+        $categories = Category::all();
+        return view("groceries.create", compact("categories"));
     }
 
     public function store() {
@@ -20,43 +23,45 @@ class GroceriesController extends Controller {
 
         $attributes = request()->validate([
             'name' => 'required|min:2|unique:groceries,name',
-            'price' => 'required|numeric',
+            'category_id' => 'required',
+            'price' => 'required|decimal:0,2',
             'amount' => 'required|gt:0|integer',
         ]);
 
         Grocery::create($attributes);
 
-        return redirect('groceries/index')->with('succes', 'Product Saved');
+        return redirect('groceries')->with('succes', 'Product Saved');
     }
 
     public function edit($id) {
-        //pass correct data to edit page
-        $grocery = Grocery::findOrFail('id');
-        return view("groceries/edit");
+        $grocery = Grocery::findOrFail($id);
+        return view("groceries.edit", compact('grocery'));
     }
 
     public function update($id) {
         $attributes = request()->validate([
             'name' => 'required|min:2|unique:groceries,name',
-            'price' => 'required|numeric',
+            'category_id' => 'required',
+            'price' => 'required|decimal:0,2',
             'amount' => 'required|gt:0|integer',
         ]);
 
         $grocery = Grocery::findOrFail($id);
 
         $grocery->name =  $request->get('name');
+        $grocery->category_id =  $request->get('category_id');
         $grocery->price = $request->get('price');
         $grocery->amount = $request->get('amount');
         $grocery->save();
 
-        return redirect('groceries/index')->with('succes', 'Product Updated');
+        return redirect('groceries')->with('succes', 'Product Updated');
     }
 
     public function destroy($id) {
-        $grocery = Grocery::findOrFail('id');
+        $grocery = Grocery::findOrFail($id);
         $grocery->delete();
 
-        return redirect('groceries/index')->with('succes', 'Product Deleted');
+        return redirect('groceries')->with('succes', 'Product Deleted');
     }
 }
 

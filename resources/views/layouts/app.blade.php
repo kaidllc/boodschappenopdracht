@@ -11,8 +11,8 @@
 <body>
 
     <nav>
-        <a href="{{ route('index') }}">Home</a>
-        <a href="{{ route('create') }}">Add Grocery</a>
+        <a href="{{ route('groceries.index') }}">Home</a></br></br>
+        <a href="{{ route('groceries.create') }}">Add Grocery</a></br></br>
     </nav>
 
     @yield('content')
